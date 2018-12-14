@@ -11,29 +11,19 @@ import SceneKit
 import ARKit
 
 class ViewController: UIViewController, ARSCNViewDelegate {
-
+    
     @IBOutlet var sceneView: ARSCNView!
+    //设立一个空场景
+    var scene: SCNScene!
+    //设立一个cameraNode节点作为相机节点
+    var cameraNode: SCNNode!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupScene()
+        setupCamera()
+        createNode()
         
-        // Set the view's delegate
-        sceneView.delegate = self
-        
-        // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
-        
-        // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/Wolf_dae.dae")!
-        
-        // Set the scene to the view
-        sceneView.scene = scene
-        let rootNode =  scene.rootNode
-        let nodes = scene.rootNode.childNodes
-        let wolfnode = nodes[0]
-        print("测试：\(rootNode.name)")
-        sceneView.allowsCameraControl = true
-        sceneView.autoenablesDefaultLighting = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,7 +31,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
-
+        
         // Run the view's session
         sceneView.session.run(configuration)
     }
@@ -52,17 +42,48 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Pause the view's session
         sceneView.session.pause()
     }
-
+    
     // MARK: - ARSCNViewDelegate
     
-/*
-    // Override to create and configure nodes for anchors added to the view's session.
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        let node = SCNNode()
+    /*
+     // Override to create and configure nodes for anchors added to the view's session.
+     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
+     let node = SCNNode()
      
-        return node
+     return node
+     }
+     */
+    func setupScene() {
+        // Set the view's delegate
+        sceneView.delegate = self
+        // Create a new scene
+        scene = SCNScene()
+        // Set the scene to the view
+        sceneView.scene = scene
+        // Show statistics such as fps and timing information
+        sceneView.showsStatistics = true
+        sceneView.allowsCameraControl = true
+        sceneView.autoenablesDefaultLighting = true
+        
     }
-*/
+    func setupCamera() {
+        // 1
+        cameraNode = SCNNode()
+        // 2
+        cameraNode.camera = SCNCamera()
+        // 3
+        cameraNode.position = SCNVector3(x: 0, y: 0, z: 5)
+        // 4
+        scene.rootNode.addChildNode(cameraNode)
+    }
+    func createNode(){
+        let role = "Wolf_dae"
+        guard let portalScene = SCNScene(named: "art.scnassets/\(role).scn") else {return}
+        let roleNode = portalScene.rootNode.childNode(withName: "wolf", recursively: true)
+        roleNode!.position = SCNVector3(0,0,-5)
+        roleNode!.name = role
+        scene.rootNode.addChildNode(roleNode!)
+    }
     
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
