@@ -77,9 +77,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         scene.rootNode.addChildNode(cameraNode)
     }
     func createNode(){
-        let role = "Wolf_dae"
+        let role = "lan"
         guard let portalScene = SCNScene(named: "art.scnassets/\(role).scn") else {return}
-        let roleNode = portalScene.rootNode.childNode(withName: "wolf", recursively: true)
+        let roleNode = portalScene.rootNode.childNode(withName: "lan", recursively: true)
         roleNode!.position = SCNVector3(0,0,-5)
         roleNode!.name = role
         scene.rootNode.addChildNode(roleNode!)
