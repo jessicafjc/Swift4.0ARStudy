@@ -9,10 +9,10 @@
 class TextModel {
     var titleText:String?
     var authorText:String?
-    var contenttText:String?
-    var textString:String?
-    func setTextString() -> String{
-        textString = titleText!+authorText!+contenttText!
+    var contenttText:[String]?
+    var textString:[String]?
+    func setTextString() -> [String]{
+        textString = [titleText] + [authorText] as! [String] + contenttText!
         return textString!
     }
 //    var titleText = "江雪"

@@ -26,18 +26,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     //    var textString = titleText + authorText + contenttText
     override func viewDidLoad() {
         super.viewDidLoad()
-        setText()
         setupScene()
         setupCamera()
-        setTextNode()
+        setTextNode(textArr: setText())
         setNodeAction()
         
     }
-    func setText(){
+    func setText() -> [String]{
         textModel.titleText = "江雪"
         textModel.authorText = "柳宗元"
-        textModel.contenttText = "千山鸟飞绝，万径人踪灭。孤舟蓑笠翁，独钓寒江雪。"
+        textModel.contenttText = ["千山鸟飞绝，","万径人踪灭。","孤舟蓑笠翁，","独钓寒江雪。"]
         textModel.setTextString()
+        return textModel.textString!
     }
     func setupScene() {
         sceneView.delegate = self
@@ -55,14 +55,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         cameraNode.position = SCNVector3(x: 0, y: 0, z: 0)
         scene.rootNode.addChildNode(cameraNode)
     }
-    func setTextNode(){
+    func setTextNode(textArr:[String]){
         let fontFamily = "Heiti TC"
         //FIX
-        var textArr = [textModel.titleText,textModel.authorText,"千山鸟飞绝，","万径人踪灭。","孤舟蓑笠翁，","独钓寒江雪。"]
         for i in 0..<textArr.count {
             var index = 0
             
-            for c in textArr[i] ?? ""{
+            for c in textArr[i] {
                 let text = SCNText(string: c.description, extrusionDepth: 0.3)
                 let node = SCNNode(geometry: text)
                 node.position = SCNVector3Make(Float(-2+index),Float(5-i*2), -10)
