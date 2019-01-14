@@ -30,7 +30,7 @@
 		<string>方正狂草.ttf</string>
 		<string>方正小篆体.ttf</string>
 		<string>金文大篆体.ttf</string>
-		<string>HYChenTiJiaGuWen.ttf</string>
+		<string>甲骨文.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

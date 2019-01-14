@@ -122,7 +122,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func setChineseNode(){
         guard let container = scene.rootNode.childNode(withName: "bamboo", recursively: false) else { return  }
         guard let chineseNode = container.childNode(withName: "chineseNode", recursively: false) else { return  }
-        var fontFamily = ["HYChenTiJiaGuWen","eY'","yuweij","STLiti","STKaiti","FZXZTFW--GB1-0","yuweij","FZKCTest"]
+        var fontFamily = ["JGW","eY'","yuweij","STLiti","STKaiti","FZXZTFW--GB1-0","FZKCTest"]
         for i in 0...6{
             let chineseText = SCNText(string: "竹", extrusionDepth: 0.3)
             

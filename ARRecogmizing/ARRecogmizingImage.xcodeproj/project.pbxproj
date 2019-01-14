@@ -18,8 +18,8 @@
 		044A426C21DDF319002EBCF3 /* 华文隶书.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 044A426321DDF309002EBCF3 /* 华文隶书.TTF */; };
 		044A426E21DDF319002EBCF3 /* 金文大篆体.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 044A426721DDF311002EBCF3 /* 金文大篆体.ttf */; };
 		044A426F21DDF319002EBCF3 /* 禹卫行书字体.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 044A426421DDF30B002EBCF3 /* 禹卫行书字体.ttf */; };
-		044A429221DEEAA4002EBCF3 /* 甲骨文.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 044A429121DEEAA4002EBCF3 /* 甲骨文.ttf */; };
 		044A429621DF0817002EBCF3 /* HYChenTiJiaGuWen.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 044A429521DF0817002EBCF3 /* HYChenTiJiaGuWen.ttf */; };
+		049B689A21E82A5A003BCB69 /* 甲骨文.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 049B689921E82A5A003BCB69 /* 甲骨文.ttf */; };
 		04A1525021D5AAC100EB1EC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A1524F21D5AAC100EB1EC0 /* AppDelegate.swift */; };
 		04A1525221D5AAC100EB1EC0 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 04A1525121D5AAC100EB1EC0 /* art.scnassets */; };
 		04A1525421D5AAC100EB1EC0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A1525321D5AAC100EB1EC0 /* ViewController.swift */; };
@@ -42,8 +42,8 @@
 		044A426521DDF30D002EBCF3 /* 华文楷体.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "华文楷体.TTF"; sourceTree = "<group>"; };
 		044A426621DDF30F002EBCF3 /* 方正狂草.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "方正狂草.ttf"; sourceTree = "<group>"; };
 		044A426721DDF311002EBCF3 /* 金文大篆体.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "金文大篆体.ttf"; sourceTree = "<group>"; };
-		044A429121DEEAA4002EBCF3 /* 甲骨文.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "甲骨文.ttf"; sourceTree = "<group>"; };
 		044A429521DF0817002EBCF3 /* HYChenTiJiaGuWen.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HYChenTiJiaGuWen.ttf; sourceTree = "<group>"; };
+		049B689921E82A5A003BCB69 /* 甲骨文.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "甲骨文.ttf"; sourceTree = "<group>"; };
 		04A1524C21D5AAC100EB1EC0 /* ARRecogmizingImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARRecogmizingImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04A1524F21D5AAC100EB1EC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04A1525121D5AAC100EB1EC0 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -74,7 +74,7 @@
 				044A429521DF0817002EBCF3 /* HYChenTiJiaGuWen.ttf */,
 				044A426221DDF307002EBCF3 /* 方正小篆体.ttf */,
 				044A426521DDF30D002EBCF3 /* 华文楷体.TTF */,
-				044A429121DEEAA4002EBCF3 /* 甲骨文.ttf */,
+				049B689921E82A5A003BCB69 /* 甲骨文.ttf */,
 				044A426321DDF309002EBCF3 /* 华文隶书.TTF */,
 				044A426721DDF311002EBCF3 /* 金文大篆体.ttf */,
 				044A426421DDF30B002EBCF3 /* 禹卫行书字体.ttf */,
@@ -183,6 +183,7 @@
 				0423FCFF21D7533F006CB89F /* leafrain.scnp in Resources */,
 				044A426921DDF319002EBCF3 /* 方正狂草.ttf in Resources */,
 				044A429621DF0817002EBCF3 /* HYChenTiJiaGuWen.ttf in Resources */,
+				049B689A21E82A5A003BCB69 /* 甲骨文.ttf in Resources */,
 				044A426A21DDF319002EBCF3 /* 方正小篆体.ttf in Resources */,
 				044A426F21DDF319002EBCF3 /* 禹卫行书字体.ttf in Resources */,
 				044A425F21DDE4AF002EBCF3 /* confetti.png in Resources */,
@@ -191,7 +192,6 @@
 				044A425721DDE20C002EBCF3 /* smoke.png in Resources */,
 				04E5600D21D743F900AD1E1A /* leaf.png in Resources */,
 				044A426021DDE4AF002EBCF3 /* confetti.scnp in Resources */,
-				044A429221DEEAA4002EBCF3 /* 甲骨文.ttf in Resources */,
 				04A1525C21D5AAC400EB1EC0 /* LaunchScreen.storyboard in Resources */,
 				044A426E21DDF319002EBCF3 /* 金文大篆体.ttf in Resources */,
 				04A1525921D5AAC400EB1EC0 /* Assets.xcassets in Resources */,
