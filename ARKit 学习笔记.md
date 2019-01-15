@@ -7,6 +7,8 @@
  
 [基本概念](#markdown-first)
 
+[Materials](#markdown-second)
+
 [常用参数、代码片段](#markdown-code)
 
 ## <a name="markdown-first"></a>基本概念
@@ -236,5 +238,8 @@
 		SCNAction.scale(to:0.002,duration:1.5)]))
 		
 		
-****
+**物理效果**
+
+
+
 ****
