@@ -7,7 +7,7 @@
  
 [基本概念](#markdown-first)
 
-[常用参数、代码片段](#markdown-pane)
+[常用参数、代码片段](#markdown-code)
 
 ## <a name="markdown-first"></a>基本概念
 
@@ -15,8 +15,26 @@
 
 ![](http://bmob-cdn-21468.b0.upaiyun.com/2019/01/15/01a309c04014ead280e2efea7b30ab97.png)
 
+## <a name="markdown-second"></a>Materials
 
-## <a name="markdown-pane"></a>常用参数、代码片段
+![](https://upload-images.jianshu.io/upload_images/1806489-869fb56e94fbed04.png)
+
+* Diffuse map(颜色贴图,漫反射贴图):给几何体一个基本的颜色纹理,不考虑灯光和特效:
+* Normal map(法线贴图):在上篇文章的灯光里讲过,灯光是使用形状表面的法向量来决定照亮哪个面的.系统自带形状是使用单一的整个面的向量,而法线贴图则以RGB值定义了精确到每个像素的法向量,这样每个像素对灯光的反应都不同,形成表面崎岖不平的灯光效果
+* Reflective map(反射贴图):以黑白图片精确定义了材质每个像素的反光程度.就是周围环境的光线在物体表面映射出的图像(实际就是天空盒子图像在物体表面的反光).
+* Occlusion map(闭塞贴图):也就是ambient occlusion map(AO贴图,环境光闭塞贴图),只有当场景中有ambient light环境光时才有作用,精确定义了每个像素在环境光作用下的被照亮程度.也就是让几何体的黑色部分不被环境光照亮而变浅
+* Specular map(镜面贴图,高光贴图):镜面贴图决定了几何体的镜面程度,黑色部分就是不光滑,白色就是光滑反光.会影响Normal map(法线贴图)外部光线照射反光和Reflective map(反射贴图)外部天空盒子图像反光的清晰程度
+* Emission map(发光贴图):在没有光线时,如果物体表面有荧光涂料,就会发光.发光贴图可以用来模拟这种物体.彩色贴图中,黑色不发光,亮色发光强,暗色发光弱。
+**需要注意的是**在Scene Kit中Emission map(发光贴图)并不真正发光,只是模拟发光效果而已.就是说不能照亮其他物体,不能产生阴影.这点与其他3D创作工具不同.
+* Multiply map(乘法贴图,正片叠底贴图):会影响其他所有效果.一般用来给最后的效果调整色彩或者亮度
+* Transparency map(透明贴图):黑色部分不透明,白色透明.**注意:**球体内部需要开启double-sided mode才能看到
+* Metalness and Roughness maps(光泽度和粗糙度贴图):Xcode8引入的新特性,Physically Based Rendering (PBR)灯光模型可以使用Metalness和Roughness贴图.
+
+参考[《3D Apple Games by Tutorials》](https://www.jianshu.com/p/936752aff5a3)
+
+相关代码[Github](https://github.com/jessicafjc/3D-iOS-Games-by-Tutorials-code)
+
+## <a name="markdown-code"></a>常用参数、代码片段
 
 **设立一个空场景**
 
