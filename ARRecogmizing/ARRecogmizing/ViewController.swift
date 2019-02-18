@@ -18,8 +18,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var scene: SCNScene!
     //设立一个cameraNode节点作为相机节点
     var cameraNode: SCNNode!
-    
-    
+    //设立一个根节点
+    var rootNode: SCNNode!
+    //设立内容节点
+    var containerNode: SCNNode!
     // MARK: View Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +59,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         scene = SCNScene(named: "art.scnassets/bamboo.scn")
         // Set the scene to the view
         sceneView.scene = scene
+        
+        rootNode = scene.rootNode
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
         //sceneView.allowsCameraControl = true
@@ -67,7 +71,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
         cameraNode.position = SCNVector3(x: 0, y: 0, z: 5)
-        scene.rootNode.addChildNode(cameraNode)
+        rootNode.addChildNode(cameraNode)
     }
     // FIX: ASD
     // MARK: - ARSCNViewDelegate (Image detection results)
@@ -77,22 +81,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         }
         let referenceImage = imageAnchor.referenceImage
         if (referenceImage.name != nil) {
-            //let imageWidth = referenceImage.physicalSize.width
-            // let imageHeight = referenceImage.physicalSize.height
-            //var setNode = setRecogmizedNode(referenceImageName: referenceImage.name!)
+         
+            containerNode = setRecogmizedNode(referenceImageName: referenceImage.name!)
            
-            //Animations
-            setChineseNode()
-            let containerNode = setRecogmizedNode(referenceImageName: referenceImage.name!)
-           
-            //chineseNode.geometry = chineseName
-            //chineseNode = SCNNode(geometry: chineseName)
-            //chineseNode.scale = SCNVector3(0.1, 0.1, 0.1)
-            
             node.addChildNode(containerNode!)
-            //粒子系统
-            
-            
+
         }
         
     }
@@ -104,9 +97,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         container.removeFromParentNode()
         container.isHidden = false
         
+        //竹子树节点
         guard let bamboo_tree = container.childNode(withName: "bamboo_tree", recursively: false) else { return nil }
         bamboo_tree.runAction(SCNAction.sequence([SCNAction.wait(duration: 0.5),SCNAction.scale(to:0.002,duration:1.5)]))
         guard let bambooArr = container.childNode(withName: "bambooArr", recursively: false) else { return nil }
+  
         for node in bambooArr.childNodes {
             let action = SCNAction.rotateBy(x: 0, y: 1, z: 0, duration: 1)
             let repeatAction = SCNAction.repeatForever(action)
@@ -116,7 +111,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         container.addChildNode(particleNode)
         setParticle(particleName: "leafrain", addNode: particleNode)
         
-        //particleNode.addParticleSystem(particle)
         return container
     }
     func setChineseNode(){
@@ -125,37 +119,57 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         var fontFamily = ["JGW","eY'","yuweij","STLiti","STKaiti","FZXZTFW--GB1-0","FZKCTest"]
         for i in 0...6{
             let chineseText = SCNText(string: "竹", extrusionDepth: 0.3)
-            
             let node = SCNNode(geometry: chineseText)
             node.position = SCNVector3Make(Float(i), 0, 0)
             chineseText.font = UIFont(name: fontFamily[i], size: 1)
             chineseNode.scale = SCNVector3(0.1, 0.1, 0.1)
             chineseNode.addChildNode(node)
         }
-//        return chineseNode
-        //            let duration = 0.2
-        //            // 2
-        //            let bounceUpAction = SCNAction.moveBy(x: 0, y: 1.0, z: 0, duration:duration)
-        //            let bounceDownAction = SCNAction.moveBy(x: 0, y: -1.0, z: 0, duration:duration)
-        //            let jumpAction =  SCNAction.sequence([bounceUpAction,bounceDownAction])
-        //            let repeatAction = SCNAction.repeatForever(jumpAction)
-        //            xiNode.runAction(repeatAction)
-        //            container.addChildNode(xiNode)
+
         
     }
     func setParticle(particleName:String,addNode:SCNNode){
         let particle = SCNParticleSystem(named: "\(particleName).scnp", inDirectory: nil)!
         addNode.addParticleSystem(particle)
     }
-    func cleanScene() {
-        for node in scene.rootNode.childNodes {
+   
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch  = touches.first! // 获取首次触摸
+        let location = touch.location(in: sceneView) // 将触摸转换成scnView的坐标
+        let hitResults = sceneView.hitTest(location, options: nil)
+        if let result = hitResults.first {
+            guard let name = result.node.name else { print("测试：nil)"); return }
+            print("选择节点：\(name)")
+            switch name {
+            case "bamboo_tree":
+                guard let bamboo_xx = containerNode.childNode(withName: "bamboo_xx", recursively: false) else { return  }
+                bamboo_xx.isHidden = false
+                let moveAction = SCNAction.move(to: SCNVector3(0.473 , 0.613, -0.005), duration: 0.5)
+                let eulerAction = SCNAction.rotateTo(x: 0, y: -90, z: 0, duration: 0.5)
+                let action = SCNAction.group([moveAction,moveAction])
+                bamboo_xx.runAction(action)
+                
+            case "bamboo_xx":
+                setChineseNode()
+            default:
+                print("选择错误")
+            }
             
-            node.removeFromParentNode()
+            result.node.isHidden = false
+            let action = SCNAction.rotateBy(x: 0, y: 1, z: 0, duration: 0.5)
+            let repeatAction = SCNAction.repeat(action, count: 1)
+            result.node.runAction(repeatAction)
             
         }
+        func cleanScene() {
+            for node in scene.rootNode.childNodes {
+                
+                node.removeFromParentNode()
+                
+            }
+        }
     }
-    
-    
 }
 
 

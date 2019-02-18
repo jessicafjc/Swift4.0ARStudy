@@ -19,12 +19,12 @@
 		044A426E21DDF319002EBCF3 /* 金文大篆体.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 044A426721DDF311002EBCF3 /* 金文大篆体.ttf */; };
 		044A426F21DDF319002EBCF3 /* 禹卫行书字体.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 044A426421DDF30B002EBCF3 /* 禹卫行书字体.ttf */; };
 		044A429621DF0817002EBCF3 /* HYChenTiJiaGuWen.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 044A429521DF0817002EBCF3 /* HYChenTiJiaGuWen.ttf */; };
+		0488144F21F762E100689AB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0488144E21F762E100689AB9 /* Assets.xcassets */; };
 		049B689A21E82A5A003BCB69 /* 甲骨文.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 049B689921E82A5A003BCB69 /* 甲骨文.ttf */; };
 		04A1525021D5AAC100EB1EC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A1524F21D5AAC100EB1EC0 /* AppDelegate.swift */; };
 		04A1525221D5AAC100EB1EC0 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 04A1525121D5AAC100EB1EC0 /* art.scnassets */; };
 		04A1525421D5AAC100EB1EC0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A1525321D5AAC100EB1EC0 /* ViewController.swift */; };
 		04A1525721D5AAC100EB1EC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04A1525521D5AAC100EB1EC0 /* Main.storyboard */; };
-		04A1525921D5AAC400EB1EC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04A1525821D5AAC400EB1EC0 /* Assets.xcassets */; };
 		04A1525C21D5AAC400EB1EC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04A1525A21D5AAC400EB1EC0 /* LaunchScreen.storyboard */; };
 		04E5600A21D7418300AD1E1A /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E5600821D7418300AD1E1A /* spark.png */; };
 		04E5600D21D743F900AD1E1A /* leaf.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E5600C21D743F800AD1E1A /* leaf.png */; };
@@ -43,13 +43,13 @@
 		044A426621DDF30F002EBCF3 /* 方正狂草.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "方正狂草.ttf"; sourceTree = "<group>"; };
 		044A426721DDF311002EBCF3 /* 金文大篆体.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "金文大篆体.ttf"; sourceTree = "<group>"; };
 		044A429521DF0817002EBCF3 /* HYChenTiJiaGuWen.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HYChenTiJiaGuWen.ttf; sourceTree = "<group>"; };
+		0488144E21F762E100689AB9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		049B689921E82A5A003BCB69 /* 甲骨文.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "甲骨文.ttf"; sourceTree = "<group>"; };
 		04A1524C21D5AAC100EB1EC0 /* ARRecogmizingImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARRecogmizingImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04A1524F21D5AAC100EB1EC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04A1525121D5AAC100EB1EC0 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		04A1525321D5AAC100EB1EC0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		04A1525621D5AAC100EB1EC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		04A1525821D5AAC400EB1EC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04A1525B21D5AAC400EB1EC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04A1525D21D5AAC400EB1EC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04E5600821D7418300AD1E1A /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
@@ -101,11 +101,11 @@
 		04A1524E21D5AAC100EB1EC0 /* ARRecogmizing */ = {
 			isa = PBXGroup;
 			children = (
+				0488144E21F762E100689AB9 /* Assets.xcassets */,
 				044A426121DDF2DB002EBCF3 /* fontfamily */,
 				04A1524F21D5AAC100EB1EC0 /* AppDelegate.swift */,
 				04A1525121D5AAC100EB1EC0 /* art.scnassets */,
 				04A1525321D5AAC100EB1EC0 /* ViewController.swift */,
-				04A1525821D5AAC400EB1EC0 /* Assets.xcassets */,
 				04A1525521D5AAC100EB1EC0 /* Main.storyboard */,
 				04A1525A21D5AAC400EB1EC0 /* LaunchScreen.storyboard */,
 				04A1525D21D5AAC400EB1EC0 /* Info.plist */,
@@ -181,6 +181,7 @@
 				04E5600A21D7418300AD1E1A /* spark.png in Resources */,
 				044A425C21DDE228002EBCF3 /* star.png in Resources */,
 				0423FCFF21D7533F006CB89F /* leafrain.scnp in Resources */,
+				0488144F21F762E100689AB9 /* Assets.xcassets in Resources */,
 				044A426921DDF319002EBCF3 /* 方正狂草.ttf in Resources */,
 				044A429621DF0817002EBCF3 /* HYChenTiJiaGuWen.ttf in Resources */,
 				049B689A21E82A5A003BCB69 /* 甲骨文.ttf in Resources */,
@@ -194,7 +195,6 @@
 				044A426021DDE4AF002EBCF3 /* confetti.scnp in Resources */,
 				04A1525C21D5AAC400EB1EC0 /* LaunchScreen.storyboard in Resources */,
 				044A426E21DDF319002EBCF3 /* 金文大篆体.ttf in Resources */,
-				04A1525921D5AAC400EB1EC0 /* Assets.xcassets in Resources */,
 				04A1525721D5AAC100EB1EC0 /* Main.storyboard in Resources */,
 				044A426B21DDF319002EBCF3 /* 华文楷体.TTF in Resources */,
 			);
