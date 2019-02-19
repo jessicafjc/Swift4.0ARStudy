@@ -7,69 +7,43 @@
 //
 
 import UIKit
-import SceneKit
-import ARKit
 
-class ViewController: UIViewController, ARSCNViewDelegate {
-
-    @IBOutlet var sceneView: ARSCNView!
+class ViewController: UIViewController ,UICollectionViewDataSource,UICollectionViewDelegate{
     
+   
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    var chineseCharacterArray = ["龟","火","龙","猪","竹","马","鸟"]
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Set the view's delegate
-        sceneView.delegate = self
-        
-        // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
-        
-        // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/scene.scn")!
-        
-        // Set the scene to the view
-        sceneView.scene = scene
+        collectionView.dataSource = self
+        collectionView.delegate = self
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return chineseCharacterArray.count
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "characterCell", for: indexPath)
+        let characterImage = cell.viewWithTag(1001) as! UIImageView
+        characterImage.image = UIImage(named: "\(chineseCharacterArray[indexPath.item])")
+        return cell
         
-        // Create a session configuration
-        let configuration = ARWorldTrackingConfiguration()
+    }
+   
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("选择的是\(chineseCharacterArray[indexPath.item])")
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let descriptionVC = storyboard.instantiateViewController(withIdentifier: "description") as? DescriptionViewController else {  return }
+        descriptionVC.tapTarget = chineseCharacterArray[indexPath.item]
+        self.present(descriptionVC, animated: true, completion: nil)
+        //descriptionVC.characterLabel.text = chineseCharacterArray[indexPath.item]
 
-        // Run the view's session
-        sceneView.session.run(configuration)
+        
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        // Pause the view's session
-        sceneView.session.pause()
-    }
 
-    // MARK: - ARSCNViewDelegate
-    
-/*
-    // Override to create and configure nodes for anchors added to the view's session.
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        let node = SCNNode()
-     
-        return node
-    }
-*/
-    
-    func session(_ session: ARSession, didFailWithError error: Error) {
-        // Present an error message to the user
-        
-    }
-    
-    func sessionWasInterrupted(_ session: ARSession) {
-        // Inform the user that the session has been interrupted, for example, by presenting an overlay
-        
-    }
-    
-    func sessionInterruptionEnded(_ session: ARSession) {
-        // Reset tracking and/or remove existing anchors if consistent tracking is required
-        
-    }
 }
